@@ -1,0 +1,58 @@
+<div class="search-container">
+  <h1>Find your table for any occasion</h1>
+
+  <%= form_with url: search_path, method: :get, local: true do |form| %>
+    <div class="form-inputs">
+      <div class="form-date">
+        <%= form.label :date, 'Date' %>
+        <%= form.date_field :date, value: Date.today, min: Date.today %>
+      </div>
+
+      <div class="form-time">
+        <%= form.label :time, 'Time' %>
+        <%= form.time_select :time, default: { hour: 19, minute: 00 } %>
+      </div>
+
+      <div class="form-party-size">
+        <%= form.label :party_size, 'Party Size' %>
+        <%= form.number_field :party_size, value: 2, in: 1..20 %>
+      </div>
+
+      <div class="form-query">
+        <%= form.label :query, 'Location, Restaurant, or Cuisine' %>
+        <%= form.search_field :query, placeholder: "Enter search terms" %>
+      </div>
+
+      <div class="form-submit">
+        <%= form.submit "Let's go", class: "search-button" %>
+      </div>
+    </div>
+    
+  <% end %>
+</div>
+
+<style>
+  .search-container {
+    background-color: #2C3E50;
+    padding: 20px;
+    color: white;
+    text-align: center;
+  }
+  .search-form {
+    /* Styles for form */
+  }
+  .form-inputs > div {
+    margin: 10px;
+    display: inline-block; /* Or flex for a more responsive design */
+  }
+  .search-button {
+    background-color: #E74C3C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+</script>

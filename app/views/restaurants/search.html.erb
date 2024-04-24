@@ -1,0 +1,12 @@
+<h1>Search Results</h1>
+
+<% if @restaurants.any? %>
+  <% @restaurants.each do |restaurant| %>
+    <div class="restaurant">
+      <h2><%= link_to restaurant.name, restaurant %></h2>
+      <!-- Add more details as needed -->
+    </div>
+  <% end %>
+<% else %>
+  <p>No restaurants found for the search criteria.</p>
+<% end %>
