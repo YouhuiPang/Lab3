@@ -29,9 +29,15 @@
           </li>
           <!-- Add more navigation items as needed -->
         </ul>
+
         <form class="d-flex">
-          <a class="btn btn-outline-primary mr-2" href="/users/sign_in">Login</a>
-          <a class="btn btn-outline-success" href="/users/sign_up">Sign Up</a>
+          <% if !user_signed_in? %>
+            <a class="btn btn-outline-primary mr-2" href="/users/sign_in">Login</a>
+            <a class="btn btn-outline-success" href="/users/sign_up">Sign Up</a>
+          <% else %>
+            <%= current_user.email %>
+            <%= link_to 'Sign out', destroy_user_session_path, class:"btn btn-outline-success"%>
+          <% end %>
         </form>
       </div>
     </div>
