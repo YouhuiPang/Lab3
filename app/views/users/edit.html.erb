@@ -1,0 +1,21 @@
+<h1>Edit Profile</h1>
+<%= form_for @user, url: profile_path, html: { method: :patch } do |f| %>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :status %>
+    <%= f.select :status, ['customer', 'restaurant'], include_blank: true %>
+  </div>
+
+  <div>
+    <%= f.submit "Update Profile" %>
+  </div>
+<% end %>

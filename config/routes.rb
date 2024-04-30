@@ -10,5 +10,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy]
     resources :reservations, only: [:new, :create, :show, :update, :destroy]
   end
+
+  resource :profile, only: [:show, :edit, :update], controller: 'users'
+  
   get 'search', to: 'restaurants#search'
+
 end

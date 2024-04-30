@@ -1,0 +1,6 @@
+<h1>User Profile</h1>
+<p>Username: <%= @user.username %></p>
+<p>Email: <%= @user.email %></p>
+<p>Status: <%= @user.status.capitalize %></p>
+
+<%= link_to 'Edit Profile', edit_profile_path, class: 'btn btn-primary' %>
