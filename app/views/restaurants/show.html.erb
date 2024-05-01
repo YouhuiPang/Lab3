@@ -1,0 +1,23 @@
+<h1><%= @restaurant.name %></h1>
+<p><strong>Description:</strong> <%= @restaurant.description %></p>
+<p><strong>Type of Food:</strong> <%= @restaurant.food_type %></p>
+<p><strong>Price Range:</strong> <%= @restaurant.price_range %></p>
+<p><strong>Open Hours:</strong> <%= @restaurant.open_hour %></p>
+
+
+<h2>Reviews</h2>
+<% if @reviews.present? %>
+  <%= render @reviews %>
+<% else %>
+  <p>No reviews yet.</p>
+<% end %>
+
+<h2>Make a Comment</h2>
+<!-- Add Review Form -->
+<% if user_signed_in? %>
+  <%= render 'reviews/form', restaurant: @restaurant %>
+<% else %>
+  <p>Please <%= link_to 'sign in', new_user_session_path %> to leave a review.</p>
+<% end %>
+
+<%= link_to 'Make a Reservation', new_restaurant_reservation_path(@restaurant), class: 'btn btn-primary' %>

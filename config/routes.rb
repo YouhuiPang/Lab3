@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update], controller: 'users'
   
   get 'search', to: 'restaurants#search'
+  
+  resources :keywords
 
 end

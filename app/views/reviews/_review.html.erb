@@ -1,0 +1,27 @@
+<% @reviews.each do |review| %>
+
+  <p>
+    <strong>Reviewer:</strong>
+    <%= review.user.username %>
+  </p>
+
+  <p>
+    <strong>Review:</strong>
+    <%= review.comment %>
+  </p>
+
+  <p>
+    <strong>Rating:</strong>
+    <%= review.stars %>
+  </p>
+
+
+  <% if current_user == review.user %>
+    <p>
+    <%= link_to "Destroy Review", [review.restaurant, review], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+    </p>
+  <% end %>
+<% end %>

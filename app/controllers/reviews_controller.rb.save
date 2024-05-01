@@ -1,0 +1,27 @@
+class ReviewsController < ApplicationController
+  before_action :set_restaurant
+  before_action :set_review, only: [:destroy]
+  before_action :authorize_user, only: [:destroy]
+
+  def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = @restaurant.reviews.build(review_params)
+    @review.user = current_user
+
+    if @review.save
+      redirect_to @restaurant, notice: 'Review was successfully created.'
+    else
+      render 'restaurants/show', status: :unprocessable_entity
+    end
+  end
+
+    end
+  end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:comment, :stars)
+  end
+
+end

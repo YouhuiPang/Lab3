@@ -3,6 +3,11 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def show
+    @restaurant = Restaurant.find(params[:id])
+    @reviews = @restaurant.reviews.includes(:user)
+  end
+
   def search
     @date = params[:date]
     @time = params[:time]
