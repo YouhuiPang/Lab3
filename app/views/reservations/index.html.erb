@@ -1,0 +1,32 @@
+<%# app/views/reservations/index.html.erb %>
+<h1>My Reservations</h1>
+
+<% if @reservations.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Restaurant</th>
+        <th>Date and Time</th>
+        <th>Party Size</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= reservation.restaurant.name %></td>
+          <td><%= reservation.reservation_time.strftime("%B %d, %Y at %I:%M%p") %></td>
+          <td><%= reservation.party_size %></td>
+          <td><%= reservation.status.capitalize %></td>
+          <td>
+            <%= link_to 'Edit', edit_reservation_path(reservation) %> |
+            <%= button_to 'Cancel', reservation_path(reservation), method: :delete, form: { data: { confirm: 'Are you sure?' } } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No reservations found.</p>
+<% end %>

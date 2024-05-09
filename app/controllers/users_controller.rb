@@ -5,6 +5,12 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    if @user.status == 'restaurant' && @user.restaurant.nil?
+      redirect_to new_restaurant_path, alert: "Please create your restaurant profile."
+    end
+    if @user && @user.status == 'restaurant'
+      @restaurant = @user.restaurant
+    end  
   end
 
   def create
@@ -13,12 +19,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @restaurant = @user.build_restaurant unless @user.restaurant
   end
 
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to profile_path, notice: 'Profile was successfully updated.'
+      redirect_to profile_path, notice: 'Profile updated successfully.'
     else
       render :edit
     end
@@ -27,7 +34,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :status)
+    params.require(:user).permit(:username, :email, :status, restaurant_attributes: [:id, :name, :description, :food_type, :open_hour, :price_range, :image])
   end
 
 end

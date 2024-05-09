@@ -1,6 +1,25 @@
+<!-- app/views/users/show.html.erb -->
 <h1>User Profile</h1>
 <p>Username: <%= @user.username %></p>
 <p>Email: <%= @user.email %></p>
 <p>Status: <%= @user.status.capitalize %></p>
+
+<% if @user && @user.status == 'restaurant' %>
+  <h2>Restaurant Profile</h2>
+  <p>Name: <%= @restaurant.name %></p>
+  <p>Description: <%= @restaurant.description %></p>
+  <p>Food Type: <%= @restaurant.food_type %></p>
+  <p>Open Hours: <%= @restaurant.open_hour %></p>
+  <p>Price Range: <%= @restaurant.price_range %></p>
+
+  <h3>Table Summary</h3>
+  <ul>
+    <% @restaurant.tables.each do |table| %>
+      <li>Table ID: <%= table.id %>, Capacity: <%= table.capacity %>, Status: <%= table.status %></li>
+    <% end %>
+  </ul>
+  <%= link_to 'Manage Tables', restaurant_tables_path(@restaurant), class: 'btn btn-primary' %>
+<% end %>
+
 
 <%= link_to 'Edit Profile', edit_profile_path, class: 'btn btn-primary' %>

@@ -1,0 +1,11 @@
+<!-- app/views/reservations/new.html.erb -->
+<h1>New Reservation for <%= @restaurant.name %></h1>
+<%= form_with model: [@restaurant, @reservation], local: true do |f| %>
+  <%= f.label :reservation_time, "Reservation Time" %>
+  <%= f.datetime_select :reservation_time %>
+
+  <%= f.label :party_size, "Party Size" %>
+  <%= f.number_field :party_size %>
+
+  <%= f.submit "Create Reservation" %>
+<% end %>

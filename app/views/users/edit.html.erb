@@ -1,5 +1,16 @@
+<!-- app/views/users/edit.html.erb -->
 <h1>Edit Profile</h1>
-<%= form_for @user, url: profile_path, html: { method: :patch } do |f| %>
+<%= form_for @user, url: profile_path(@user), html: { method: :put } do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <%= f.label :username %>
     <%= f.text_field :username %>
@@ -14,6 +25,36 @@
     <%= f.label :status %>
     <%= f.select :status, ['customer', 'restaurant'], include_blank: true %>
   </div>
+
+  <% if @user.status == 'restaurant' %>
+    <h2>Restaurant Details</h2>
+    <%= f.fields_for :restaurant do |rf| %>
+      <div>
+        <%= rf.label :name %>
+        <%= rf.text_field :name %>
+      </div>
+      <div>
+        <%= rf.label :description %>
+        <%= rf.text_area :description %>
+      </div>
+      <div>
+        <%= rf.label :food_type, 'Type of Cuisine' %>
+        <%= rf.text_field :food_type %>
+      </div>
+      <div>
+        <%= rf.label :open_hour, 'Opening Hours' %>
+        <%= rf.text_field :open_hour, placeholder: "e.g., 9 AM - 10 PM" %>
+      </div>
+      <div>
+        <%= rf.label :price_range, 'Price Range' %>
+        <%= rf.text_field :price_range, placeholder: "e.g., $ - $$$$" %>
+      </div>
+      <div>
+        <%= rf.label :image, 'Restaurant Image URL' %>
+        <%= rf.text_field :image, placeholder: "URL for an image of your restaurant" %>
+      </div>
+    <% end %>
+  <% end %>
 
   <div>
     <%= f.submit "Update Profile" %>

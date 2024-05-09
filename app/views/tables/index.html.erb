@@ -1,0 +1,13 @@
+<!-- app/views/tables/index.html.erb -->
+<h1>Manage Tables for <%= @restaurant.name %></h1>
+<%= link_to 'Add New Table', new_restaurant_table_path(@restaurant), class: 'btn btn-primary' %>
+
+<ul>
+  <% @restaurant.tables.each do |table| %>
+    <li>
+      Table ID: <%= table.id %>, Capacity: <%= table.capacity %>, Status: <%= table.status %>
+      <%= link_to 'Edit', edit_restaurant_table_path(@restaurant, table), class: 'btn btn-secondary btn-sm' %>
+      <%= link_to 'Delete', restaurant_table_path(@restaurant, table), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+    </li>
+  <% end %>
+</ul>

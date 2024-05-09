@@ -1,0 +1,31 @@
+<h1>New Restaurant Profile</h1>
+<%= form_for(@restaurant) do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :food_type %>
+    <%= f.text_field :food_type %>
+  </div>
+  <div>
+    <%= f.label :open_hour, 'Opening Hours' %>
+    <%= f.text_field :open_hour, placeholder: "e.g., 9 AM - 10 PM" %>
+  </div>
+  <div>
+    <%= f.label :price_range, 'Price Range' %>
+    <%= f.text_field :price_range, placeholder: "e.g., $ - $$$$" %>
+  </div>
+  <div>
+    <%= f.label :image, 'Restaurant Image URL' %>
+    <%= f.text_field :image, placeholder: "URL for an image of your restaurant" %>
+  </div>
+
+  <div>
+    <%= f.submit "Create Restaurant" %>
+  </div>
+<% end %>

@@ -1,23 +1,31 @@
-<h1><%= @restaurant.name %></h1>
-<p><strong>Description:</strong> <%= @restaurant.description %></p>
-<p><strong>Type of Food:</strong> <%= @restaurant.food_type %></p>
-<p><strong>Price Range:</strong> <%= @restaurant.price_range %></p>
-<p><strong>Open Hours:</strong> <%= @restaurant.open_hour %></p>
+<!-- app/views/restaurants/show.html.erb -->
+<div class="restaurant-header-show">
+  <%= image_tag @restaurant.image, alt: @restaurant.name, class: 'restaurant-image-show' %>
+</div>
+<div class="restaurant-info-show">
+  <h1><%= @restaurant.name %></h1>
+  <p><strong>Description:</strong> <%= @restaurant.description %></p>
+  <p><strong>Type of Food:</strong> <%= @restaurant.food_type %></p>
+  <p><strong>Price Range:</strong> <%= @restaurant.price_range %></p>
+  <p><strong>Open Hours:</strong> <%= @restaurant.open_hour %></p>
+</div>
 
+<div class="reviews-section">
+  <h2>Reviews</h2>
+  <% if @reviews.present? %>
+    <%= render @reviews %>
+  <% else %>
+    <p>No reviews yet.</p>
+  <% end %>
+</div>
 
-<h2>Reviews</h2>
-<% if @reviews.present? %>
-  <%= render @reviews %>
-<% else %>
-  <p>No reviews yet.</p>
-<% end %>
-
-<h2>Make a Comment</h2>
-<!-- Add Review Form -->
-<% if user_signed_in? %>
-  <%= render 'reviews/form', restaurant: @restaurant %>
-<% else %>
-  <p>Please <%= link_to 'sign in', new_user_session_path %> to leave a review.</p>
-<% end %>
+<div class="comment-section">
+  <h2>Make a Comment</h2>
+  <% if user_signed_in? %>
+    <%= render 'reviews/form', restaurant: @restaurant %>
+  <% else %>
+    <p>Please <%= link_to 'sign in', new_user_session_path %> to leave a review.</p>
+  <% end %>
+</div>
 
 <%= link_to 'Make a Reservation', new_restaurant_reservation_path(@restaurant), class: 'btn btn-primary' %>

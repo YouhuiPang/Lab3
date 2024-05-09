@@ -1,20 +1,34 @@
 Rails.application.routes.draw do
+  # Devise routes for user authentication
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  devise_scope :user do  
-   get '/users/sign_out' => 'devise/sessions#destroy'     
+  devise_scope :user do
+    get '/users/sign_out', to: 'devise/sessions#destroy'
   end
-  root to: 'restaurants#index'
+
+  # Root route
+  root 'restaurants#index'
+
+  # Resources for restaurants and nested entities
   resources :restaurants do
     resources :reviews, only: [:create, :destroy]
-    resources :reservations, only: [:new, :create, :show, :update, :destroy]
+    resources :reservations, except: [:index, :edit, :update, :destroy]
+    resources :tables
   end
 
-  resource :profile, only: [:show, :edit, :update], controller: 'users'
-  
-  get 'search', to: 'restaurants#search'
-  
-  resources :keywords
+  # Independent reservations routes
+  resources :reservations, only: [:index, :edit, :update, :destroy]
 
+  # Route for user's reservations
+  get 'my_reservations', to: 'reservations#index'
+
+  # Singular resource for user profile
+  resource :profile, only: [:show, :edit, :update], controller: 'users'
+
+  # Route for search functionality
+  get 'search', to: 'restaurants#search'
+
+  # Keywords resource
+  resources :keywords
 end

@@ -1,12 +1,21 @@
 <h1>Search Results</h1>
 
-<% if @restaurants.any? %>
-  <% @restaurants.each do |restaurant| %>
-    <div class="restaurant">
-      <h2><%= link_to restaurant.name, restaurant %></h2>
-      <!-- Add more details as needed -->
-    </div>
+<div class="restaurants-list">
+  <% if @restaurants.any? %>
+    <% @restaurants.each do |restaurant| %>
+      <div class="restaurant-entry">
+        <div class="restaurant-image">
+          <%= image_tag(restaurant.image || 'https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg', alt: restaurant.name) %>
+        </div>
+        <div class="restaurant-info">
+          <h2><%= link_to restaurant.name, restaurant %></h2>
+          <p><%= "#{restaurant.food_type} · #{restaurant.price_range}" %></p>
+          <p><%= pluralize(restaurant.reviews.count, 'review') %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No restaurants found for the search criteria.</p>
   <% end %>
-<% else %>
-  <p>No restaurants found for the search criteria.</p>
-<% end %>
+</div>

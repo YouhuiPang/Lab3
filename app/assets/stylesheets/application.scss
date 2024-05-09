@@ -14,3 +14,59 @@
  *= require_self
  */
 @import "bootstrap";
+
+
+.restaurants-list {
+  margin-top: 20px;
+}
+
+.restaurant-entry {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+
+.restaurant-image img {
+  width: 150px;  
+  height: 150px; 
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+
+.restaurant-info h2 {
+  margin-bottom: 5px;
+}
+
+.restaurant-info p {
+  margin: 3px 0;
+}
+
+
+.restaurant-header-show {
+  width: 100%;
+  display: block;
+}
+
+.restaurant-image-show {
+  width: 100%;
+  height: auto; 
+}
+
+.restaurant-info-show {
+  padding: 20px;
+  background-color: #fff; 
+}
+
+.reviews-section, .comment-section {
+  padding: 20px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}

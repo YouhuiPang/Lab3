@@ -1,6 +1,8 @@
 class Restaurant < ApplicationRecord
+  belongs_to :user
   has_many :reservations
   has_many :reviews
+  has_many :tables
   validates :name, :food_type, :open_hour, presence: true
   def self.search(query, date, time, party_size)
     results = all

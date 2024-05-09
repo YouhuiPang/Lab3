@@ -1,0 +1,9 @@
+<!-- app/views/tables/_form.html.erb -->
+<%= form_for [@restaurant, table] do |f| %>
+  <div class="field">
+    <%= f.label :capacity %>
+    <%= f.number_field :capacity %>
+  </div>
+
+  <%= f.submit table.new_record? ? 'Create Table' : 'Update Table', class: 'btn btn-primary' %>
+<% end %>
