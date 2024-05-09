@@ -29,6 +29,4 @@ Rails.application.routes.draw do
   # Route for search functionality
   get 'search', to: 'restaurants#search'
 
-  # Keywords resource
-  resources :keywords
 end

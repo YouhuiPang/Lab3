@@ -1,4 +1,4 @@
-<%# app/views/reservations/index.html.erb %>
+<!-- app/views/reservations/index.html.erb -->
 <h1>My Reservations</h1>
 
 <% if @reservations.present? %>
@@ -15,13 +15,21 @@
     <tbody>
       <% @reservations.each do |reservation| %>
         <tr>
-          <td><%= reservation.restaurant.name %></td>
+          <% if current_user.customer? %>
+            <td><%= reservation.restaurant.name %></td>
+          <% elsif current_user.restaurant_user? %>
+            <td><%= reservation.user.username %></td>
+          <% end %>
           <td><%= reservation.reservation_time.strftime("%B %d, %Y at %I:%M%p") %></td>
           <td><%= reservation.party_size %></td>
           <td><%= reservation.status.capitalize %></td>
           <td>
-            <%= link_to 'Edit', edit_reservation_path(reservation) %> |
-            <%= button_to 'Cancel', reservation_path(reservation), method: :delete, form: { data: { confirm: 'Are you sure?' } } %>
+            <% if current_user.customer? %>
+              <%= link_to 'Edit', edit_reservation_path(reservation) %> |
+              <%= button_to 'Cancel', reservation_path(reservation), method: :delete, form: { data: { confirm: 'Are you sure?' } } %>
+            <% else %>
+              <%= link_to 'Manage', edit_reservation_path(reservation) %> 
+            <% end %>
           </td>
         </tr>
       <% end %>

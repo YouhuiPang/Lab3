@@ -16,7 +16,7 @@
       <a class="navbar-brand" href="/">
         <h3>LOGO</h3>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -26,9 +26,8 @@
               <a class="nav-link" href="/profile">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/reservations">My Reservations</a>
+                <a class="nav-link" href="/reservations">My Reservations</a>
             </li>
-          <!-- Add more navigation items as needed -->
           <% else %>
             <li class="nav-item">
               <a class="nav-link" href="/users/sign_in">Profile</a>
@@ -39,12 +38,12 @@
           <% end %>
         </ul>
         <form class="d-flex">
-          <% if !user_signed_in? %>
+          <% unless user_signed_in? %>
             <a class="btn btn-outline-primary mr-2" href="/users/sign_in">Login</a>
             <a class="btn btn-outline-success" href="/users/sign_up">Sign Up</a>
           <% else %>
             <%= current_user.username %>
-            <%= link_to 'Sign out', destroy_user_session_path, class:"btn btn-outline-success"%>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"btn btn-outline-success" %>
           <% end %>
         </form>
       </div>
