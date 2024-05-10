@@ -3,6 +3,25 @@
 ## Introduction
 This Rails-based application is designed to facilitate restaurant reservations. It caters to both customers and restaurant owners by providing a platform to manage bookings, reviews, and restaurant profiles efficiently.
 
+### Testing Reservations
+
+To test the reservation system:
+
+- **Pre-configured Restaurants**: The system has two pre-configured restaurants with tables ready for reservations:
+  - **Chez Panisse**:
+    - Login: `1@1`
+    - Password: `123456`
+  - **Zino**:
+    - Login: `2@1`
+    - Password: `111111`
+  - These accounts provide access to the restaurant management interface where you can view and manage reservations.
+
+- **Creating Your Own Restaurant**: You can also create your own restaurant profile to test the reservation system. Ensure you:
+  - Complete all required information for your restaurant.
+  - Add tables to enable booking functionalities.
+
+By following these guidelines, you can fully explore the features of the reservation system from both the customer's and restaurant manager's perspectives.
+
 ## Features
 - **User Authentication**: Differentiate between customer and restaurant owner accounts.
 - **Restaurant Profiles**: Owners can create and manage comprehensive profiles for their restaurants.
