@@ -19,6 +19,6 @@ This Rails-based application is designed to facilitate restaurant reservations. 
 - **Review**: Allows customers to post reviews regarding their visits.
 - **Table**: Represents individual tables within a restaurant, tracking their status relative to reservations.
 
-### Prerequisites
+## Prerequisites
 - Ruby on Rails
 - MySQL or PostgreSQL
