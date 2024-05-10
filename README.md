@@ -40,4 +40,4 @@ By following these guidelines, you can fully explore the features of the reserva
 
 ## Prerequisites
 - Ruby on Rails
-- MySQL or PostgreSQL
+- MySQL
