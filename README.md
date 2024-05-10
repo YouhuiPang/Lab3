@@ -20,7 +20,7 @@ To test the reservation system:
   - Complete all required information for your restaurant.
   - Add tables to enable booking functionalities.
 
-By following these guidelines, you can fully explore the features of the reservation system from both the customer's and restaurant manager's perspectives.
+By following these guidelines, you can fully explore the features of the reservation system from restaurant manager's perspectives.
 
 ## Features
 - **User Authentication**: Differentiate between customer and restaurant owner accounts.
