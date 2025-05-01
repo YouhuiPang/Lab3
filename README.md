@@ -5,7 +5,7 @@ This Rails-based application is designed to facilitate restaurant reservations. 
 
 ### Testing Reservations
 
-To test the reservation system:
+To test the reservation system: 
 
 - **Pre-configured Restaurants**: The system only has two pre-configured restaurants with tables ready for reservations:
   - **Chez Panisse**:
